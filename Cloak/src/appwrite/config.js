@@ -14,14 +14,14 @@ export class Service{
 
     async createPost({ content, userId}){
         try {
-          const postId =ID.unique()
+            const documentId= ID.unique()
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                postId,
+                documentId, //gives unique id to every new document
                 {
                   content,
-                  userId
+                  userId,
                 }
             )
         } catch (error) {
@@ -29,12 +29,12 @@ export class Service{
         }
     }
 
-    async updatePost(postId,{content}){
+    async updatePost(documentId,{content}){
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                postId,
+                documentId,
                 {
                   content,
                 }
@@ -59,12 +59,12 @@ export class Service{
         }
     }
 
-    async getPost(postId){
+    async getPost(documentId){
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                postId
+                documentId
             
             )
         } catch (error) {
