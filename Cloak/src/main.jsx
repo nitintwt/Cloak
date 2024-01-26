@@ -6,7 +6,7 @@ import store from './store/store.js'
 import './index.css'
 import Home from './components/Pages/Home.jsx'
 import Layout from './Layout.jsx'
-import Login from "./components/Login.jsx"
+
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import App from "./App.jsx"
 
