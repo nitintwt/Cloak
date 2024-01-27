@@ -6,9 +6,11 @@ import store from './store/store.js'
 import './index.css'
 import Home from './components/Pages/Home.jsx'
 import Layout from './Layout.jsx'
+import Post from './components/Post.jsx'
 
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import App from "./App.jsx"
+import PostCard from './components/PostCard.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,8 +18,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
         {
-          path: '/',
-          element: <Home />,
+          path: '/post/:id',
+          element: <Post />,
         },
     ],
 },
@@ -31,8 +33,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     domain="dev-ei7n27pbjy8zkcl7.us.auth0.com"
     clientId="7rXjNAcLVWONMQWbV3mUC43Z0UNPBqTU"
     redirectUri= {window.location.origin }>
-      <Layout/>
+              
+ 
+              <RouterProvider router={router}/>
+
+        
   </Auth0Provider>
+  
   </React.StrictMode>
   </>
 

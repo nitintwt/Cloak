@@ -14,11 +14,11 @@ export class Service{
 
     async createPost({ content, userId}){
         try {
-            const documentId= ID.unique()
+            
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                documentId, //gives unique id to every new document
+                ID.unique(), //gives unique id to every new document
                 {
                   content,
                   userId,
@@ -44,12 +44,12 @@ export class Service{
         }
     }
 
-    async deletePost(postId){
+    async deletePost(documentId){
         try {
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                postId
+                documentId
             
             )
             return true

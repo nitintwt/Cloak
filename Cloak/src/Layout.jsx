@@ -13,6 +13,7 @@ function Layout() {
      <Outlet/>
      {isAuthenticated ?(<DiscussionCard/>):""}
      
+     
     </> 
   )
 }
