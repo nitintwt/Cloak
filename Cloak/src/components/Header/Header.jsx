@@ -16,6 +16,7 @@ export default function Header() {
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
                 <button onClick={(e) => logout ()}>Logout</button>
+                <Link to="/allposts">All Posts</Link>
              </div>
             ) : (
           <div className="flex items-center space-x-4">

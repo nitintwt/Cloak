@@ -1,54 +1,35 @@
-import { useForm } from "react-hook-form"
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useState } from "react"
+
+import service from "@/appwrite/config";
+import { useState } from "react";
+
 
 export function UserName() {
-  const [userName , setUserName]= useState()
-  const {handleSubmit} = useForm()
- 
-    const Submit = (data) => {
-      console.log("Form data submitted:", data);
-      // Add your logic here, e.g., send data to the server, perform validation, etc.
-    };
-    
-
-  
 
 
+  const [userName, setUserName] = useState("");
 
+  const submit = async () => {
+    try {
+      await service.createUserName({
+        userName: userName,
+      });
+    } catch (error) {
+      console.error("error creating post : ", error);
+    }
+  };
 
   return (
-    <Form>
-      <form onSubmit={handleSubmit(Submit)} className="space-y-8">
-        <FormField
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" value={userName} onChange={(e) => setUserName(e.target.value)} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
-  )
+    <div>
+      <div>
+        <input type="text" value={userName} onChange={(e) => (setUserName(e.target.value))} />
+      </div>
+      <div>
+        <button onClick={submit}>Submit</button>
+      </div>
+    </div>
+
+  );
 }
 
-export default UserName
+export default UserName;
+

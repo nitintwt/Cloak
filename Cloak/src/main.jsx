@@ -11,6 +11,8 @@ import Post from './components/Post.jsx'
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import App from "./App.jsx"
 import PostCard from './components/PostCard.jsx'
+import GetPosts from './components/getPosts/GetPosts.jsx'
+import DiscussionCard from './components/content/DiscussionCard.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
         {
           path: '/post/:id',
           element: <Post />,
+        },
+        {
+          path: '/allposts',
+          element: <DiscussionCard />,
         },
     ],
 },

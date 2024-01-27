@@ -28,6 +28,21 @@ export class Service{
             console.log("Appwrite serive :: createPost :: error", error);
         }
     }
+    async createUserName({userName}){
+        try {
+            
+            return await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId2,
+                ID.unique(),
+                {
+                userName,
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: createuserName :: error", error);
+        }
+    }
 
     async updatePost(documentId,{content}){
         try {
