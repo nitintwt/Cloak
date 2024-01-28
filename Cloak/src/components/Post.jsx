@@ -21,10 +21,10 @@ function Post() {
 
 
   return post ? (
-    <div className='container mx-auto my-8'>
+    <div className='container  my-8'>
     <div className='bg-white p-8 rounded-md shadow-md'>
       <div className='text-2xl font-semibold mb-4'>{post.content}</div>
-      <hr className='my-4 border-t border-gray-300' />
+      <hr className='my- border-t border-gray-300 ml-2 mt-4' />
       <Comment />
     </div>
   </div>

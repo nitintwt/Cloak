@@ -1,36 +1,57 @@
-import React, { useState } from 'react'
-import CommentInput from './CommentInput'
-import CommentItem from './commentItem'
-const dummycomments =[
+import React, { useState } from 'react';
+import CommentInput from './CommentInput';
+import CommentItem from './CommentItem';
+import { Textarea } from '../ui/textarea';
+import { Button } from '../ui/button';
+
+const dummycomments = [
   {
-    
-    body:"First comment",
-    comments:[]
+    id: 1,
+    body: "First comment",
   },
   {
-    
-    body:"Second comment",
-    comments:[]
+    id: 2,
+    body: "Second comment",
   }
-
-]
+];
 
 function Comment() {
-  const [comments , setComments] = useState(dummycomments)
-  
-  const onComment =(newComment)=>{
-    setComments((prev) => [newComment, ...prev])
+  const [comments, setComments] = useState(dummycomments);
+  const [commentBody, setCommentBody] = useState('');
+
+  const onComment = () => {
+    if (commentBody.trim() === '') {
+      return
     }
+    const newComment = {
+      body: commentBody,
+    }
+    setComments((prev) => [newComment, ...prev])
+    setCommentBody('')
+  }
+
   return (
-    <div className='flex flex-col gap-6 h-screen w-screen'>
-       <CommentInput onComment={onComment}/>
-       <div className='flex flex-col gap-4'>
-         {comments.map((comment )=>{
-          <CommentItem  comment={comment}/>
-          })}
-        </div>
-   </div>
-  )
+    <div className='container mx-auto mt-8 p-4'>
+      <h1 className='text-2xl font-bold mb-4'>Comments</h1>
+      <div className='flex flex-col items-start space-y-4'>
+        <Textarea
+          placeholder="Type your comment here."
+          value={commentBody}
+          onChange={(e) => setCommentBody(e.target.value)}
+          className="p-2 border rounded"
+        />
+        <Button
+          onClick={onComment}
+          className="bg-black text-white px-3 py-2 rounded hover:bg-white hover:text-black"
+        >
+          Done
+        </Button>
+        {comments.map((comment) => (
+          <CommentItem key={comment.id} comment={comment} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default Comment;
