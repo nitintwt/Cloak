@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
-import CommentInput from './CommentInput';
+import service from '@/appwrite/config';
 import CommentItem from './CommentItem';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 
 const dummycomments = [
   {
-    id: 1,
     body: "First comment",
   },
   {
-    id: 2,
     body: "Second comment",
   }
 ];
 
-function Comment() {
+function Comment({postId}) {
   const [comments, setComments] = useState(dummycomments);
   const [commentBody, setCommentBody] = useState('');
 
-  const onComment = () => {
+  const onComment = async () => {
     if (commentBody.trim() === '') {
-      return
+      return alert ("comment toh likh bhai pehle , submit pehle kar raha ")
     }
     const newComment = {
       body: commentBody,
     }
     setComments((prev) => [newComment, ...prev])
     setCommentBody('')
+
+    try {
+      await service.createComment({
+        comment:commentBody,
+        postId:postId,
+      })
+    } catch (error) {
+      console.error('Error creating comment:' , error)
+    }
   }
 
   return (

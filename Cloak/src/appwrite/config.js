@@ -43,6 +43,40 @@ export class Service{
             console.log("Appwrite serive :: createuserName :: error", error);
         }
     }
+    async createComment({comment, postId}){
+        try {
+            
+            return await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId3,
+                ID.unique(),
+                {
+                comment,
+                postId,
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: createComment :: error", error);
+        }
+    }
+
+    async getComments({postId}){
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId3,
+                postId,
+                commentId,
+                [
+                    `postId=${postId}`,
+                ]
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: getPosts :: error", error);
+            return false
+        }
+    }
+  
 
     async updatePost(documentId,{content}){
         try {

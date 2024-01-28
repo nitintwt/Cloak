@@ -10,11 +10,12 @@ function GetPosts() {
     service.getPosts([])
     .then((response) => {
       if (response) {
-        setPosts(response.documents);
+        const reversedPosts= response.documents.reverse()
+        setPosts(reversedPosts);
       }
       setLoading(false)
     })
-  },[])
+  })
 
   if (loading) {
     return <div className='font-bold'>Loading...</div>
