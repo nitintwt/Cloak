@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import service from '@/appwrite/config'
+import Comment from './comment/Comment'
 
 function Post() {
   const [post , setPost]= useState(null)
@@ -21,10 +22,12 @@ function Post() {
 
   return post ? (
     <>
-    <div>
+    <div className=''>
       <div>
         <div>{post.content}</div>
-
+      </div>
+      <div>
+        <Comment/>
       </div>
     </div>
     
