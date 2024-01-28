@@ -16,7 +16,7 @@ import DiscussionCard from './components/content/DiscussionCard.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <Layout />,
     children: [
         {
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
         {
           path: '/allposts',
           element: <DiscussionCard />,
+        },
+        {
+          path: '/',
+          element: <Home />,
         },
     ],
 },

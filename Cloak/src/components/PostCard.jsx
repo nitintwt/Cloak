@@ -8,8 +8,11 @@ import service from '@/appwrite/config'
 function PostCard({$id, content}) {
 
   return (
+    
     <Link to={`/post/${$id}`}>
-      <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">{content}</ScrollArea>
+      <div className='flex space-x-2'>
+       <ScrollArea className="h-[250px] w-[400px] rounded-md border p-4 ">{content}</ScrollArea>
+      </div>
     </Link>
   )
 }

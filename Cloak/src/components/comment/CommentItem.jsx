@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CommentInput from "./CommentInput";
+import CommentItemss from "./CommentItemss";
 
 
 function CommentItem({comment}){
@@ -23,7 +24,7 @@ function CommentItem({comment}){
     {isReplying && <CommentInput onComment={onComment}/>}
     <div className='flex flex-col gap-3'>
     {comments.map((comment )=>(
-          <CommentItem comment={comment}/>
+          <CommentItemss comment={comment}/>
           ))}
     </div>
     </div>

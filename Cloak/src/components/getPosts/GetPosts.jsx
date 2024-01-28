@@ -4,6 +4,7 @@ import PostCard from '../PostCard';
 
 function GetPosts() {
   const [posts, setPosts] = useState([]);
+  const [loading , setLoading] = useState(true)
 
   useEffect(() => {
     service.getPosts([])
@@ -11,8 +12,13 @@ function GetPosts() {
       if (response) {
         setPosts(response.documents);
       }
+      setLoading(false)
     })
-  })
+  },[])
+
+  if (loading) {
+    return <div className='font-bold'>Loading...</div>
+  }
 
   return (
     <div className='container mx-auto py-8'>

@@ -12,19 +12,22 @@ const showContent =()=>{
   return user.email.endsWith("@kiit.ac.in")
 }
 
-  return (
-    <>
+return (
+  <div className="container mx-auto my-8">
     {showContent() ? (
-    <div>
-    <h1>kiitian</h1> 
-    <AddText/>
-    <GetPosts/>
-    </div>)
-    : 
-    (<h1>Not kiitian</h1>)}
-    </>
-    
-  )
+      <div>
+        <h1 className="text-3xl font-bold mb-4">Oh,My Lovable Kiitians!</h1>
+        <AddText />
+        <GetPosts />
+      </div>
+    ) : (
+      <div className="text-center">
+        <h1 className="text-3xl font-bold mb-4">Sorry, You are not a Kiitian.</h1>
+      </div>
+    )}
+  </div>
+);
 }
+
 
 export default DiscussionCard

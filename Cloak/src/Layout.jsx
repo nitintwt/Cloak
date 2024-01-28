@@ -10,7 +10,7 @@ function Layout() {
   const {isAuthenticated} =useAuth0()
   return (
     <>
-     <Home/>
+     <Header/>
      <Outlet/> 
     </> 
   )
