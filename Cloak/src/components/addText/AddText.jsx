@@ -7,7 +7,7 @@ function AddText() {
   const [input, setInput] = useState('');
 
   const handleSubmit = async () => {
-    if (input.trim()==='') return alert("Message toh likh le bhai pehle");
+    if (input.trim()==='') return alert("Message toh likh le bhai pehle");  //checks if the input is empty or not 
     try {
       await service.createPost({
         content: input,
