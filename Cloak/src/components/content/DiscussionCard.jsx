@@ -1,9 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
 import AddText from '../addText/AddText'
-import GetPost from '../getPosts/GetPosts'
-import UserName from '../username/Username'
-import PostCard from '../PostCard'
 import GetPosts from '../getPosts/GetPosts'
 
 function DiscussionCard() {
