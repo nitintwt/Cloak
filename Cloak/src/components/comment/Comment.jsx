@@ -4,17 +4,10 @@ import CommentItem from './CommentItem';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 
-const dummycomments = [
-  {
-    body: "First comment",
-  },
-  {
-    body: "Second comment",
-  }
-];
+
 
 function Comment({postId}) {
-  const [comments, setComments] = useState(dummycomments);
+  const [comments, setComments] = useState([]);
   const [commentBody, setCommentBody] = useState('');
 
   const onComment = async () => {

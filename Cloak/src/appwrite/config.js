@@ -62,14 +62,11 @@ export class Service{
 
     async getComments({postId}){
         try {
+            const queries = [Query.equal("postId", `${postId}`)];
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId3,
-                postId,
-                commentId,
-                [
-                    `postId=${postId}`,
-                ]
+                queries
             )
         } catch (error) {
             console.log("Appwrite serive :: getPosts :: error", error);
