@@ -11,7 +11,6 @@ const showContent =()=>{
 
 return (
   <div className="container mx-auto my-8">
-    <div className="sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 mx-auto">
       {showContent() ? (
         <div>
           <h1 className="text-3xl font-bold mb-4">Oh,My Lovable Kiitians!</h1>
@@ -24,7 +23,6 @@ return (
         </div>
       )}
     </div>
-  </div>
 );
 }
 
