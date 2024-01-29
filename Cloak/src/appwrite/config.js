@@ -1,5 +1,5 @@
 import conf from '../conf/conf.js';
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, ID, Databases,Query } from "appwrite";
 
 export class Service{
     client = new Client();
@@ -62,7 +62,7 @@ export class Service{
 
     async getComments({postId}){
         try {
-            const queries = [Query.equal("postId", `${postId}`)];
+            const queries = [Query.equal("postId", `${postId}`)]; //checks which comments postId(attribute in appwrite) is equals to the given postId 
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId3,
