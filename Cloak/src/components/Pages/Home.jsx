@@ -16,6 +16,7 @@ function Home() {
             Ask questions, talk with others, and help each other get better.
             If you're from KIIT, let's create a community where we can share our experiences and knowledge.
             Join in, ask, and make our time at KIIT more enjoyable together.
+            <span className='font-bold'>Use on your laptop for better experience.</span>
           </p>
         </div>
         <div className="container mx-auto my-8 p-4 bg-white rounded-md shadow-md">
