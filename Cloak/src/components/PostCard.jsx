@@ -12,7 +12,7 @@ function PostCard({$id, content}) {
       </ScrollArea>
     </div>
   </Link>
-]
+
   )
 }
 
