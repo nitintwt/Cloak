@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
 import AddText from '../addText/AddText'
 import GetPosts from '../getPosts/GetPosts'
+import UserName from '../username/UserName'
 
 function DiscussionCard() {
   const {user}= useAuth0()
@@ -16,6 +17,7 @@ return (
           <h1 className="text-3xl font-bold mb-4">Oh,My Lovable Kiitians!</h1>
           <AddText />
           <GetPosts />
+
         </div>
       ) : (
         <div className="text-center">

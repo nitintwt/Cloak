@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import service from '@/appwrite/config'
 import Comment from './comment/Comment'
 import RetrieveComments from './comment/RetrieveComments'
+import UserName from './username/UserName'
 
 function Post() {
   const [post , setPost]= useState(null)
@@ -29,6 +30,7 @@ function Post() {
       <Comment postId={id}/>
       <RetrieveComments postId={id} />
     </div>
+
   </div>
 ) : null;
 
