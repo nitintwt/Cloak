@@ -75,7 +75,6 @@ export class Service{
         }
     }
   
-
     async updatePost(documentId,{content}){
         try {
             return await this.databases.updateDocument(

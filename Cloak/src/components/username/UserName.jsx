@@ -1,16 +1,20 @@
 import service from "@/appwrite/config";
+import { authLogin } from "@/store/authSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 
 export function UserName() {
   const [userName, setUserName] = useState("");
   const [authId , setAuthId] = useState()
-  const {user,event,}=useAuth0()
+  const {user}=useAuth0()
+  const dispatch = useDispatch()
 
   useEffect(()=>{
-    const authId=event.user_id;
+    const authId=user.sub;
     setAuthId(authId);
-  })
+  },[user])
 
   const submit = async () => {
     try {
@@ -18,6 +22,10 @@ export function UserName() {
         userName: userName,
         authId:authId
       });
+      dispatch(authLogin(userName))
+      
+      setUserName("")
+
     } catch (error) {
       console.error("error creating post : ", error);
     }
