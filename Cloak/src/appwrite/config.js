@@ -76,23 +76,20 @@ export class Service{
         }
     }
   
-    async getUserPosts({userId}){
+    async getUserPosts({authId}){
         try {
-            const queries = [Query.equal("userId", `${userId}`)];
+            const queries = [Query.equal("authId", `${authId}`)];
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
-                conf.appwriteCollectionId3,
+                conf.appwriteCollectionId,
                 queries,
-                {
-                    userId,
-                }
             )
         } catch (error) {
             console.log("Appwrite serive :: getUserPosts :: error", error);
             return false
         }
     }
-  
+
     async updatePost(documentId,{content}){
         try {
             return await this.databases.updateDocument(
