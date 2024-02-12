@@ -9,6 +9,7 @@ import { Auth0Provider} from '@auth0/auth0-react';
 import DiscussionCard from './components/content/DiscussionCard.jsx'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import Profile from './components/profile/Profile'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         {
           path: '/',
           element: <Home />,
+        },
+        {
+          path: '/profile',
+          element: <Profile/>,
         },
     ],
 },

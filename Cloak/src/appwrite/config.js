@@ -12,7 +12,7 @@ export class Service{
         this.databases = new Databases(this.client);
     }
 
-    async createPost({ content, userId}){
+    async createPost({ content, userId , authId}){
         try {
             
             return await this.databases.createDocument(
@@ -22,6 +22,7 @@ export class Service{
                 {
                   content,
                   userId,
+                  authId,
                 }
             )
         } catch (error) {
@@ -71,6 +72,23 @@ export class Service{
             )
         } catch (error) {
             console.log("Appwrite serive :: getPosts :: error", error);
+            return false
+        }
+    }
+  
+    async getUserPosts({userId}){
+        try {
+            const queries = [Query.equal("userId", `${userId}`)];
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId3,
+                queries,
+                {
+                    userId,
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: getUserPosts :: error", error);
             return false
         }
     }

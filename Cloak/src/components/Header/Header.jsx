@@ -29,6 +29,12 @@ export default function Header() {
               >
                 All Posts
               </Link>
+              <Link
+                to="/profile"
+                className="bg-black text-white px-4 py-2 rounded transition duration-300 hover:bg-white hover:text-black"
+              >
+                Profile
+              </Link>
             </div>
           ) : (
             <div className="flex items-center space-x-4">

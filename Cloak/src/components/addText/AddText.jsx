@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 import service from '@/appwrite/config';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function AddText() {
   const [input, setInput] = useState('');
+  const {user}= useAuth0()
 
   const handleSubmit = async () => {
     if (input.trim()==='') return alert("Message toh likh le bhai pehle");  //checks if the input is empty or not 
     try {
       await service.createPost({
         content: input,
-        userId: 'nitin',
+        userId: user.name,
+        authId: user.sub,
       });
       setInput('');
     } catch (error) {
