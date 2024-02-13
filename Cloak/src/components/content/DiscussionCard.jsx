@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux'
 
 function DiscussionCard() {
   const {user}= useAuth0()
-const showContent =()=>{
+/*const showContent =()=>{
   return user.email.endsWith("@kiit.ac.in")
-}
+}*/
 
 const userName2 = useSelector((state)=>{
   
@@ -18,7 +18,7 @@ const userName2 = useSelector((state)=>{
 console.log(userName2)
 return (
   <div className="container mx-auto my-8">
-      {showContent() ? (
+      
         <div>
           <h1 className="text-3xl font-bold mb-4">Oh,My Lovable Kiitians!</h1>
           <AddText />
@@ -27,11 +27,6 @@ return (
           <h1>{userName2}</h1>
 
         </div>
-      ) : (
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Sorry, You are not a Kiitian.</h1>
-        </div>
-      )}
     </div>
 );
 }
