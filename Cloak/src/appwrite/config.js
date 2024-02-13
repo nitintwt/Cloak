@@ -105,13 +105,12 @@ export class Service{
         }
     }
 
-    async deletePost(documentId){
+    async deletePost(postId){
         try {
             await this.databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                documentId
-            
+                postId
             )
             return true
         } catch (error) {

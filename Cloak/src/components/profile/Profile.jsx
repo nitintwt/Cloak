@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect, useState } from 'react'
 import service from '@/appwrite/config'
 import PostCard from '../PostCard'
+import UserPosts from '../getPosts/UserPosts'
 
 function Profile() {
   const {user}= useAuth0()
@@ -44,7 +45,7 @@ function Profile() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {userPosts.map((post) => (
                 <div key={post.$id} className="bg-white p-4 rounded-lg shadow-md">
-                  <PostCard {...post} />
+                  <UserPosts {...post} />
                 </div>
               ))}
             </div>
