@@ -10,6 +10,7 @@ import DiscussionCard from './components/content/DiscussionCard.jsx'
 import { Provider } from 'react-redux'
 import store from './store/store'
 import Profile from './components/profile/Profile'
+import EditUserPost from './components/getPosts/EditUserPost'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         {
           path: '/profile',
           element: <Profile/>,
+        },
+        {
+          path: '/edit-post/:id',
+          element: <EditUserPost/>
         },
     ],
 },

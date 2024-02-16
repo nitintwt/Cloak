@@ -90,12 +90,12 @@ export class Service{
         }
     }
 
-    async updatePost(documentId,{content}){
+    async updatePost(postId,{content}){
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                documentId,
+                postId,
                 {
                   content,
                 }
@@ -119,12 +119,12 @@ export class Service{
         }
     }
 
-    async getPost(documentId){
+    async getPost(postId){
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                documentId
+                postId
             
             )
         } catch (error) {

@@ -9,6 +9,8 @@ function Post() {
   const [post , setPost]= useState(null)
   const {navigate}= useNavigate()
   const {id} = useParams()
+
+  
   
   
  
@@ -20,6 +22,10 @@ function Post() {
         });
     } else navigate("/");
 }, [ id,navigate]);
+
+
+
+  
 
 
   return post ? (
