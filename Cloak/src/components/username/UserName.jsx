@@ -1,4 +1,4 @@
-import service from "@/appwrite/config";
+/*import service from "@/appwrite/config";
 import { authLogin } from "@/store/authSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
@@ -44,5 +44,32 @@ export function UserName() {
   );
 }
 
-export default UserName;
+export default UserName;*/
+
+import service from '@/appwrite/config'
+import { useAuth0 } from '@auth0/auth0-react'
+import React, { useEffect } from 'react'
+import { useActionData } from 'react-router-dom'
+
+function UserName() {
+  const {user}= useAuth0()
+
+  useEffect( async ()=>{
+    
+    await service.createUserName({
+      userName:"",
+      authId: user.sub,
+    })
+    
+  })
+
+  return (
+    <div>
+      <h1></h1>
+    </div>
+  )
+}
+
+export default UserName
+
 
