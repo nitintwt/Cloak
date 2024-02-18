@@ -3,9 +3,10 @@ Cloak is a web app designed for anonymous discussions within a college community
 
 # Features
 1. Anonymous user authentication using Auth0
-2. Post and comment functionalities
-3. Components designed with Shadcn
-4. Database powered by Appwrite
+2. Add , Read , edit and delte post.
+3. Comment functionalities.
+4. Components designed with Shadcn
+5. Database powered by Appwrite
    
 # Tech Stack
 1. React
