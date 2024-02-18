@@ -6,11 +6,12 @@ import service from '@/appwrite/config';
 import { useState } from 'react';
 
 function UserPosts({$id , content , userId}) {
+  const naviagte = useNavigate()
 
   const deletePost =()=>{
     service.deletePost($id)
     .then(()=>{
-      
+      naviagte("/allposts")
     })
     .catch((error) => {
       console.error("Error deleting post:", error);

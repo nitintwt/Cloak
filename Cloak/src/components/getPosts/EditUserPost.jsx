@@ -6,7 +6,7 @@ import { Textarea } from '../ui/textarea';
 function EditUserPost() {
   const {id}= useParams()
   const [post , setPost]= useState("")
-  const {navigate}= useNavigate()
+  const navigate= useNavigate()
 
   useEffect( ()=>{
     service.getPost(id).then ((post)=>{
@@ -18,7 +18,7 @@ function EditUserPost() {
     await service.updatePost(id , {
       content:post
     })
-     navigate('/')
+     navigate('/profile')
   }
 
   return (
