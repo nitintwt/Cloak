@@ -7,7 +7,7 @@ export default function Header() {
   const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
 
   return (
-    <header className="bg-black text-white shadow sticky top-0 z-50">
+    <header className="bg-black text-white shadow sticky top-0 z-50 min-w-[300px]">
       <nav className="container mx-auto px-4 lg:px-6 py-3">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold">

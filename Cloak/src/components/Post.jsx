@@ -10,23 +10,22 @@ function Post() {
   const {navigate}= useNavigate()
   const {id} = useParams()
 
-  
-  
-  
- 
-  useEffect(() => {
-    if (id) {
-        service.getPost(id).then((post) => {
-            if (post) setPost(post);
-            else navigate("/");
-        });
-    } else navigate("/");
-}, [ id,navigate]);
 
-
-
-  
-
+  useEffect(()=>{
+    if (id){
+      const fetchPost = async ()=>{
+        try {
+          const data = await service.getPost(id)
+          if (data){
+            setPost(data)
+          } else navigate("/")
+        } catch (error) {
+          console.error("error:", error)
+        }
+      }
+      fetchPost()
+    }
+  },[id , navigate])
 
   return post ? (
     <div className='container  my-8'>
@@ -38,7 +37,7 @@ function Post() {
     </div>
 
   </div>
-) : null;
+) : <div>Loading...</div>;
 
 }
 

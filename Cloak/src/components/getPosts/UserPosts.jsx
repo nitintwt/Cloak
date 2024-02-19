@@ -8,7 +8,7 @@ import { useState } from 'react';
 function UserPosts({$id , content , userId}) {
   const naviagte = useNavigate()
 
-  const deletePost =()=>{
+  const deletePost = ()=>{
     service.deletePost($id)
     .then(()=>{
       naviagte("/allposts")

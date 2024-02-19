@@ -58,7 +58,7 @@ function Profile() {
                   </div>
                 ))
               ) : (
-                <p>Loading... </p>
+                <p>No posts </p>
               )}
             </div>
           )}

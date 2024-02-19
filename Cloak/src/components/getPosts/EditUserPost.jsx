@@ -8,18 +8,27 @@ function EditUserPost() {
   const [post , setPost]= useState("")
   const navigate= useNavigate()
 
-  useEffect( ()=>{
-    service.getPost(id).then ((post)=>{
-      setPost(post)
-    })
-  },[id])
-  
+
   const updatePost= async ()=>{
     await service.updatePost(id , {
       content:post
     })
      navigate('/profile')
   }
+
+  useEffect(()=>{
+    const fetchPost = async ()=>{
+      try {
+        const data = await service.getPost(id)
+        if (data){
+          setPost(data)
+        }
+      } catch (error) {
+        console.error("error fetching post:" , error)
+      }
+    }
+    fetchPost()
+  },[id])
 
   return (
     <div className='container  my-8'>

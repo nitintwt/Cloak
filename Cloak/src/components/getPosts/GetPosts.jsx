@@ -6,15 +6,23 @@ function GetPosts() {
   const [posts, setPosts] = useState([]);
   const [loading , setLoading] = useState(true)
 
-  useEffect(() => {
-    service.getPosts([])
-    .then((response) => {
-      if (response) {
-        const reversedPosts= response.documents.reverse()
-        setPosts(reversedPosts);
+
+
+  useEffect(()=>{
+    const fetchPosts= async ()=>{
+      try {
+        const allPosts = await service.getPosts([])
+        if(allPosts){
+          const reversedPosts= allPosts.documents.reverse()
+          setPosts(reversedPosts);
+        }
+        setLoading(false)
+      } catch (error) {
+        console.error("error fetching all posts:", error)
       }
-      setLoading(false)
-    })
+    }
+
+    fetchPosts()
   })
 
   if (loading) {
@@ -22,8 +30,8 @@ function GetPosts() {
   }
 
   return (
-    <div className='container mx-auto py-8'>
-      <div className='flex flex-wrap -mx-2'>
+    <div className='container mx-auto py-8 '>
+      <div className='p-4 lg:w-1/2 md:w-full '>
         {posts.map((post) => (
           <div key={post.$id} className='p-4'>
             <PostCard {...post} />

@@ -17,15 +17,12 @@ const userName2 = useSelector((state)=>{
 })
 console.log(userName2)
 return (
-  <div className="container mx-auto my-8">
+  <div className="container mx-auto my-8 w-full">
       
         <div>
           <h1 className="text-3xl font-bold mb-4">Oh,My Lovable Kiitians!</h1>
           <AddText />
           <GetPosts />
-          
-          <h1>{userName2}</h1>
-
         </div>
     </div>
 );

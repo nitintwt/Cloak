@@ -5,17 +5,21 @@ function RetrieveComments({postId }) {
   const [getComments , setGetComments] = useState([])
   const [loading , setLoading] = useState(true)
 
-  useEffect(() => {
-    
-    service.getComments({postId})
-    .then((response) => {
-      if (response) {
-        const reversedComments= response.documents.reverse()
-        setGetComments(reversedComments);
+  useEffect(()=>{
+    const fetchComments = async ()=>{
+      try {
+        const comments = await service.getComments({postId})
+        if (comments){
+          const reversedComments= comments.documents.reverse()
+          setGetComments(reversedComments);
+        }
+        setLoading(false)
+      } catch (error) {
+        console.error("error fetching comments:" , error)
       }
-      setLoading(false)
-    })
-  },[postId])
+    }
+    fetchComments()
+  }, [postId])
 
   if (loading) {
     return <div className='font-bold'>Loading...</div>
