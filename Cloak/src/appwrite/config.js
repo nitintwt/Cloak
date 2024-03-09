@@ -1,21 +1,17 @@
 import conf from '../conf/conf.js';
 import { Client, ID, Databases,Query } from "appwrite";
 
-export class Service{
-    client = new Client();
-    databases;
-    
-    constructor(){
-        this.client
-        .setEndpoint(conf.appwriteUrl)
-        .setProject(conf.appwriteProjectId);
-        this.databases = new Databases(this.client);
-    }
+const Service=()=>{
+  const client = new Client()
+  client
+    .setEndpoint(conf.appwriteUrl)
+    .setProject(conf.appwriteProjectId)
+    const databases = new Databases(client)
 
-    async createPost({ content, userId , authId}){
+    const createPost = async ({ content, userId , authId})=>{
         try {
             
-            return await this.databases.createDocument(
+            return await databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 ID.unique(), //gives unique id to every new document
@@ -29,10 +25,10 @@ export class Service{
             console.log("Appwrite serive :: createPost :: error", error);
         }
     }
-    async createUserName({userName,authId}){
+    const createUserName = async ({userName,authId})=>{
         try {
             
-            return await this.databases.createDocument(
+            return await databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId2,
                 ID.unique(),
@@ -45,10 +41,10 @@ export class Service{
             console.log("Appwrite serive :: createuserName :: error", error);
         }
     }
-    async createComment({comment, postId}){
+    const createComment= async ({comment, postId})=>{
         try {
             
-            return await this.databases.createDocument(
+            return await databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId3,
                 ID.unique(),
@@ -62,10 +58,10 @@ export class Service{
         }
     }
 
-    async getComments({postId}){
+    const getComments= async({postId})=>{
         try {
             const queries = [Query.equal("postId", `${postId}`)]; //checks which comments postId(attribute in appwrite) is equals to the given postId 
-            return await this.databases.listDocuments(
+            return await databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId3,
                 queries
@@ -76,10 +72,10 @@ export class Service{
         }
     }
   
-    async getUserPosts({authId}){
+    const getUserPosts = async ({authId})=>{
         try {
             const queries = [Query.equal("authId", `${authId}`)];
-            return await this.databases.listDocuments(
+            return await databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries,
@@ -90,9 +86,9 @@ export class Service{
         }
     }
 
-    async updatePost(postId,{content}){
+    const updatePost = async (postId,{content})=>{
         try {
-            return await this.databases.updateDocument(
+            return await databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 postId,
@@ -105,9 +101,9 @@ export class Service{
         }
     }
 
-    async deletePost(postId){
+    const  deletePost= async(postId)=> {
         try {
-            await this.databases.deleteDocument(
+            await databases.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 postId
@@ -119,9 +115,9 @@ export class Service{
         }
     }
 
-    async getPost(postId){
+    const getPost = async(postId)=>{
         try {
-            return await this.databases.getDocument(
+            return await databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 postId
@@ -133,9 +129,9 @@ export class Service{
         }
     }
 
-    async getPosts(){
+    const  getPosts= async()=>{
         try {
-            return await this.databases.listDocuments(
+            return await databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
             )
@@ -144,7 +140,17 @@ export class Service{
             return false
         }
     }
-  }
-
-  const service = new Service()
+    return {
+        createComment,
+        createPost,
+        createUserName,
+        getComments,
+        getPost,
+        getPosts,
+        getUserPosts,
+        updatePost,
+        deletePost,
+    }
+}
+  const service = Service()
   export default service

@@ -26,8 +26,8 @@ function AddText() {
     try {
       await service.createPost({
         content: input,
-        userId: user.name,
-        authId: user.sub,
+        userId: user?.name,
+        authId: user?.sub,
       });
       setInput('');
     } catch (error) {
